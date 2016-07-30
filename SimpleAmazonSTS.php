@@ -5,6 +5,9 @@
  * @license MIT License
  * @author Tatsuya Tsuruoka <http://github.com/ttsuruoka>
  */
+
+namespace dmleach\dynamophp;
+
 class SimpleAmazonSTS
 {
     protected $access_key_id;
