@@ -1,0 +1,22 @@
+{
+    "authors": [
+        {
+            "name": "Dave Leach",
+            "email": "dave@daveleach.work",
+            "homepage": "http://www.daveleach.work",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "dmleach\\dynamo-php\\": ""
+        }
+    },
+    "description": "A PHP wrapper for the Amazon Dynamo NoSQL database platform",
+    "homepage": "http://www.github.com/dmleach/dynamo-php",
+    "license": "MIT",
+    "name": "dmleach/dynamo-php",
+    "require": {
+        "php": "^5.3 || ^7.0"
+    }
+}
