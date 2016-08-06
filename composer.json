@@ -9,13 +9,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "dmleach\\dynamo-php\\": ""
+            "dmleach\\dynamophp\\": ""
         }
     },
     "description": "A PHP wrapper for the Amazon Dynamo NoSQL database platform",
-    "homepage": "http://www.github.com/dmleach/dynamo-php",
+    "homepage": "http://www.github.com/dmleach/dynamophp",
     "license": "MIT",
-    "name": "dmleach/dynamo-php",
+    "name": "dmleach/dynamophp",
     "require": {
         "php": "^5.3 || ^7.0"
     }
