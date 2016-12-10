@@ -30,12 +30,6 @@ class SimpleAmazonSTS
         }
     }
 
-    public static function urlencode($string)
-    {
-        // Encode URL according to RFC 3986
-        return str_replace('%7E', '~', rawurlencode($string));
-    }
-
     public function call($operation, $params = array())
     {
         $params['AWSAccessKeyId'] = $this->access_key_id;
@@ -54,7 +48,9 @@ class SimpleAmazonSTS
         $canonical_string = join('&', $canonical_string);
 
         $parsed_url = parse_url($this->base_url);
-        $string_to_sign = "POST\n{$parsed_url['host']}\n{$parsed_url['path']}\n{$canonical_string}";
+        $string_to_sign = "POST\n{$parsed_url['host']}\n"
+            . array_key_exists('path', $parsed_url) ? "{$parsed_url['path']}\n" : ""
+            . "{$canonical_string}";
         $params['Signature'] = base64_encode(hash_hmac('sha256', $string_to_sign, $this->secret_access_key, true));
 
         $ch = curl_init();
@@ -72,5 +68,16 @@ class SimpleAmazonSTS
 
         $xml = simplexml_load_string($this->raw_body);
         return json_decode(json_encode($xml), true);
+    }
+
+    public function setBaseUrl($url)
+    {
+      $this->base_url = $url;
+    }
+
+    public static function urlencode($string)
+    {
+        // Encode URL according to RFC 3986
+        return str_replace('%7E', '~', rawurlencode($string));
     }
 }
